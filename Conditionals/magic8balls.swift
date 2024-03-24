@@ -28,5 +28,8 @@ default:
   eightBall = "Error"
 }
 
-print("\(playerName) asks: \(playerQuestion)")
+playerName == "" ?
+  print("Question: \(playerQuestion)") :
+  print("\(playerName) asks: \(playerQuestion)")
+
 print("Magic 8 Ball's answer: \(eightBall)")
