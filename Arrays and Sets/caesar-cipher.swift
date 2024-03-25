@@ -7,6 +7,7 @@ var message = Array(secretMessage.lowercased())
 for i: Int in 0..<message.count {
   for j: Int in 0..<alphabet.count {
     if message[i] == alphabet[j] {
+      // just in case the j is > 23
       message[i] = alphabet[(j+3) % 26]
       break
     }
