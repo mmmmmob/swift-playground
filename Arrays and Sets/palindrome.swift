@@ -1,5 +1,8 @@
-var text: [String] = ["m","a","d","a","m"]
-var reversed: [String] = []
+let isPalindromeText: String = "madam"
+
+// create an array with Array() result in Charater type inference
+var text = Array(isPalindromeText)
+var reversed: [Character] = []
 
 var counter: Int = text.count - 1
 
@@ -22,7 +25,7 @@ print("Reversed is \(reversed)\n")
 
 
 if text == reversed {
-  print("'\(text.joined())' is a palindrome!")
+  print("'\(isPalindromeText)' is a palindrome!")
 } else {
-  print("'\(text.joined())' isn't a palindrome.")
+  print("'\(isPalindromeText)' isn't a palindrome.")
 }
