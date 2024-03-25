@@ -1,0 +1,28 @@
+var text: [String] = ["m","a","d","a","m"]
+var reversed: [String] = []
+
+var counter: Int = text.count - 1
+
+// while loop
+/*
+while counter >= 0 {
+  reversed.append(text[counter])
+  counter -= 1
+}
+*/
+
+// for-in with stride() loop
+for _ in stride(from: counter, through: 0, by: -1) {
+  reversed.append(text[counter])
+  counter -= 1
+}
+
+print("Text is \(text)")
+print("Reversed is \(reversed)\n")
+
+
+if text == reversed {
+  print("'\(text.joined())' is a palindrome!")
+} else {
+  print("'\(text.joined())' isn't a palindrome.")
+}
