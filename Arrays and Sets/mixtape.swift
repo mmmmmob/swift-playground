@@ -15,12 +15,12 @@ mixtape += ["Can't Hold Us - Macklemore & Ryan Lewis ft. Ray Dalton",
     "Run the World (Girls) - Beyoncé",
     "Work - Rihanna ft. Drake",
     "Uptown Funk - Mark Ronson ft. Bruno Mars",
-    "Sorry Not Sorry - Demi Lovato",]
+    "Sorry Not Sorry - Demi Lovato" ]
 mixtape.insert("Eye of the Tiger - Survivor", at: 3)
 mixtape += ["Roar - Katy Perry",
     "Shut Up and Dance - Walk the Moon",
     "Boss Bitch - Doja Cat"]
-    
+
 mixtape.remove(at: 5)
 
 var num: Int = 0

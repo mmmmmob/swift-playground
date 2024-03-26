@@ -23,7 +23,6 @@ for _ in stride(from: counter, through: 0, by: -1) {
 print("Text is \(text)")
 print("Reversed is \(reversed)\n")
 
-
 if text == reversed {
   print("'\(isPalindromeText)' is a palindrome!")
 } else {

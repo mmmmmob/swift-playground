@@ -4,7 +4,7 @@ var output: String = ""
 for char in input {
   let lowerChar: String = char.lowercased()
   switch lowerChar {
-  case "a","i","o":
+  case "a", "i", "o":
     output += lowerChar.uppercased()
   case "e":
     output += "EE"
