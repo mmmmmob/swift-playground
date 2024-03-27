@@ -19,7 +19,7 @@ func getComputerChoice() -> String {
   }
 }
 
-func determineWinner(_ userChoice: String,_ compChoice: String) -> String {
+func determineWinner(_ userChoice: String, _ compChoice: String) -> String {
   var decision = "It's a tie"
   switch userChoice {
   case "rock":

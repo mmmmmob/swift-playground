@@ -2,7 +2,7 @@ var englishText = "This is a secret message. How are you!"
 var secretMessage = ".... . .-.. .-.. --- .-.-.- / - .... .. ... / .. ... / -.-- --- ..- .-. / -.-. .- .--. - .- .. -. / ... .--. . .- -.- .. -. --. .-.-.-"
 
 // ----Encode normal message into morse code with dictionary---- //
-var letterToMorse: [String : String] = [
+var letterToMorse: [String: String] = [
   "a": ".-",
   "b": "-...",
   "c": "-.-.",
@@ -88,8 +88,7 @@ for (letter, morseChar) in letterToMorse {
 for morseValue in morseCodeArray {
   if let letterChar = morseToLetter[morseValue] {
     decodedMessage += letterChar
-  }
-  else {
+  } else {
     decodedMessage += " "
   }
 }

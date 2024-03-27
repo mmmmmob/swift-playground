@@ -16,7 +16,7 @@ class Pokemon {
   }
 }
 
-var fushigidane = Pokemon(num: 1, name: "フシギダネ", type: ["Grass 🌱","Poison 💀"], ability: ["Overgrow"])
+var fushigidane = Pokemon(num: 1, name: "フシギダネ", type: ["Grass 🌱", "Poison 💀"], ability: ["Overgrow"])
 
 var hitokage = Pokemon(num: 4, name: "ヒトカゲ", type: ["Fire 🔥"], ability: ["Blaze"])
 

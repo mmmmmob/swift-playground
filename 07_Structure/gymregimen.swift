@@ -16,16 +16,11 @@ struct Exercise {
 
 var pushUp = Exercise(name: "Push Up", muscleGroup: ["Triceps", "Chest", "Shoulders"], reps: 10, sets: 3)
 
-var jumpingJack = Exercise(name: "Jumping Jack", muscleGroup: ["Legs","Biceps"], reps: 25, sets: 5)
+var jumpingJack = Exercise(name: "Jumping Jack", muscleGroup: ["Legs", "Biceps"], reps: 25, sets: 5)
 
 struct Regimen {
   var dayOfWeek: String
   var exercises: [Exercise]
-
-  init(dayOfWeek: String, exercises: [Exercise]) {
-    self.dayOfWeek = dayOfWeek
-    self.exercises = exercises
-  }
 
   func printExercisePlan() {
     print("Today is \(self.dayOfWeek) and the plan is to:\n")
