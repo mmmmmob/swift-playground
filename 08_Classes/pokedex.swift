@@ -33,6 +33,10 @@ class GigantamaxPokemon: Pokemon {
     self.location = location
     super.init(num: num, name: name, type: type, ability: ability)
   }
+
+  override func displayInfo() {
+    print("\(self.name) (#\(self.num)) : is a \(self.type) pokemon that has \(self.ability) as their signature move! and can ba found around \(self.location)\n")
+  }
 }
 
 var rizadon = GigantamaxPokemon(num: 6, name: "リザードン", type: ["Fire 🔥"], ability: ["Blaze"], location: "Lake of Outrage")
