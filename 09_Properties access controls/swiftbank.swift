@@ -1,6 +1,7 @@
 struct SwiftBank {
   private let password: String
   
+  // initiator with password setup
   init(password: String, initiaDeposit: Double) {
     self.password = password
     makeDeposit(ofAmount: initiaDeposit)
@@ -26,19 +27,27 @@ struct SwiftBank {
   }
 
   // type property
-  static let depositBonusRate: Double = 0.01
+  static let depositBonusRate: Double = 0.05
+  private var alreadyGotABonus: Bool = false
 
-  private func finalDepositWithBonus(fromInitialDeposit deposit: Double) -> Double {
-    return deposit + deposit * SwiftBank.depositBonusRate
-    
+  mutating private func isFinalDepositWithBonus(fromInitialDeposit deposit: Double) -> Double {
+    if deposit >= 1000 && !alreadyGotABonus {
+      let bonus: Double = deposit * SwiftBank.depositBonusRate
+      print("Congratulations! You got $\(bonus) deposit bonus at \(SwiftBank.depositBonusRate * 100)% rate")
+      alreadyGotABonus = true
+      return deposit + bonus
+    } else {
+      return deposit
+    }
   }
+}
 
-  // ------ main method ** refactor as extension later? ** ----- //
-
+// ------ main method ------ //
+extension SwiftBank {
   // deposit method (mutate var balance)
   mutating func makeDeposit(ofAmount depositAmount: Double) {
-    let depositWithBonus = finalDepositWithBonus(fromInitialDeposit: depositAmount)
-    print("Making a deposit of $\(depositAmount) with a bonus rate of \(SwiftBank.depositBonusRate). The final amount deposited is $\(depositWithBonus)\n")
+    let depositWithBonus = isFinalDepositWithBonus(fromInitialDeposit: depositAmount)
+    print("Making a deposit of $\(depositWithBonus).\n") 
     balance += depositWithBonus
   }
 
@@ -67,4 +76,7 @@ struct SwiftBank {
 var myAccount = SwiftBank(password: "1234pass", initiaDeposit: 500)
 myAccount.makeDeposit(ofAmount: 50)
 myAccount.makeWithdrawal(ofAmount: 100, usingPassword: "1234pass")
+myAccount.displayBalance(usingPassword: "1234pass")
+myAccount.makeDeposit(ofAmount: 1000)
+myAccount.makeDeposit(ofAmount: 1000)
 myAccount.displayBalance(usingPassword: "1234pass")
