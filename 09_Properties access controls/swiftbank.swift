@@ -46,9 +46,13 @@ struct SwiftBank {
 extension SwiftBank {
   // deposit method (mutate var balance)
   mutating func makeDeposit(ofAmount depositAmount: Double) {
-    let depositWithBonus = isFinalDepositWithBonus(fromInitialDeposit: depositAmount)
-    print("Making a deposit of $\(depositWithBonus).\n") 
-    balance += depositWithBonus
+    if depositAmount <= 0 {
+      print("Please enter the correct amount to deposit.")
+    } else {
+      let depositWithBonus = isFinalDepositWithBonus(fromInitialDeposit: depositAmount)
+      print("Making a deposit of $\(depositWithBonus).\n") 
+      balance += depositWithBonus
+    }
   }
 
   // show balance method
@@ -63,12 +67,16 @@ extension SwiftBank {
 
   // withdrawal method (mutate var balance)
   mutating func makeWithdrawal(ofAmount withdrawalAmount: Double, usingPassword password: String) {
-    if isValid(password) {
-      balance -= withdrawalAmount
-      print("Making a $\(withdrawalAmount) withdrawal.\n")
+    if withdrawalAmount > 0 && withdrawalAmount <= balance {
+      if isValid(password) {
+        balance -= withdrawalAmount
+        print("Making a $\(withdrawalAmount) withdrawal.\n")
+      } else {
+        print("Error: Invalid password. Cannot make withdrawal.\n")
+        return
+      }
     } else {
-      print("Error: Invalid password. Cannot make withdrawal.\n")
-      return
+      print("Please enter the correct amount to withdrawn.")
     }
   }
 }
@@ -78,5 +86,6 @@ myAccount.makeDeposit(ofAmount: 50)
 myAccount.makeWithdrawal(ofAmount: 100, usingPassword: "1234pass")
 myAccount.displayBalance(usingPassword: "1234pass")
 myAccount.makeDeposit(ofAmount: 1000)
-myAccount.makeDeposit(ofAmount: 1000)
+myAccount.makeDeposit(ofAmount: -4.2)
+myAccount.makeWithdrawal(ofAmount: 1501, usingPassword: "pass1234")
 myAccount.displayBalance(usingPassword: "1234pass")
