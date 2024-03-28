@@ -47,7 +47,7 @@ extension SwiftBank {
   // deposit method (mutate var balance)
   mutating func makeDeposit(ofAmount depositAmount: Double) {
     if depositAmount <= 0 {
-      print("Please enter the correct amount to deposit.")
+      print("Please enter the correct amount to deposit.\n")
     } else {
       let depositWithBonus = isFinalDepositWithBonus(fromInitialDeposit: depositAmount)
       print("Making a deposit of $\(depositWithBonus).\n") 
@@ -76,7 +76,7 @@ extension SwiftBank {
         return
       }
     } else {
-      print("Please enter the correct amount to withdrawn.")
+      print("Please enter the correct amount to withdrawn.\n")
     }
   }
 }
