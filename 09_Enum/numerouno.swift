@@ -15,7 +15,7 @@ func displayProductOffering() {
 enum Edition: String {
   case basic = "basic"
   case premium = "premium"
-  case ultimate = "ultimate"
+  case ultimate // string enum values can be omitted when they are equal to the case name 
 
   mutating func upgrade() {
     switch self {
@@ -34,10 +34,10 @@ enum DeliveryMethod {
   case cloudDigital(isLifetime: Bool)
   case shipping(weight: Int)
 
-  var shippingCost : Int {
+  var shippingCost: Int {
         switch self {
             // use let to extract value from associated value in enum
-            case .shipping(let weight): 
+            case .shipping(let weight):
                 return weight * 2
             case .cloudDigital:
                 return 0

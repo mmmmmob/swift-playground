@@ -1,6 +1,5 @@
 struct SwiftBank {
   private let password: String
-  
   // initiator with password setup
   init(password: String, initiaDeposit: Double) {
     self.password = password
@@ -50,7 +49,7 @@ extension SwiftBank {
       print("Please enter the correct amount to deposit.\n")
     } else {
       let depositWithBonus = isFinalDepositWithBonus(fromInitialDeposit: depositAmount)
-      print("Making a deposit of $\(depositWithBonus).\n") 
+      print("Making a deposit of $\(depositWithBonus).\n")
       balance += depositWithBonus
     }
   }
