@@ -37,14 +37,17 @@ struct School {
 
     // how to unwrap optionals in 3-ways
     // I. give default value for nil after ??
+    // -> ternary operator on steroid
     print("\(favoriteTeacher.name)'s email is \(favoriteTeacher.email ?? "not existed")")
 
     // II. if-let statement
+    // -> If let existed then do THAT on let or else do ANOTHER THAT
     if let teacherMail = favoriteTeacher.email {
       print("Their email is \(teacherMail)")
     } else { print("Their email is not existed") }
 
-    // III. guard statemant
+    // III. guard statemant 
+    // -> hey 'guard'! 'let' this conditions met for them to pass through or 'else' 'return' them back with this line executed!
     guard let teacherEmail = favoriteTeacher.email else {
       print("Their email is not existed\n")
       return
