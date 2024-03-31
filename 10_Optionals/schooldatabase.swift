@@ -35,10 +35,10 @@ struct School {
 
     // how to unwrap optionals in 3-ways
 
-    // I. give default value for nil after ??
+    // ? I. give default value for nil after ??
     print("\(favoriteTeacher.name)'s email is \(favoriteTeacher.email ?? "not existed")\n")
 
-    // II. guard statemant
+    // ? II. guard statemant
     /*
     guard let teacherEmail = favoriteTeacher.email else {
       print("Their email is not existed")
@@ -46,7 +46,7 @@ struct School {
       print("Their email is \(teacherEmail)")
     */
 
-    // III. if-let statement
+    // ? III. if-let statement
     /*
     if let teacherMail = favoriteTeacher.email {
       print("Their email is \(teacherMail)")
