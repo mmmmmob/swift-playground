@@ -10,6 +10,8 @@ struct Teacher {
   var id: Int
   var email: String?
   var hairColor: String?
+
+  // optionals also means "nil or no nil?!""
 }
 
 struct School {
