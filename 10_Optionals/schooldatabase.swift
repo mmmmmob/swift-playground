@@ -34,26 +34,24 @@ struct School {
     print("They have \(favoriteTeacher.hairColor ?? "no") hair")
 
     // how to unwrap optionals in 3-ways
+    // I. give default value for nil after ??
+    print("\(favoriteTeacher.name)'s email is \(favoriteTeacher.email ?? "not existed")")
 
-    // ? I. give default value for nil after ??
-    print("\(favoriteTeacher.name)'s email is \(favoriteTeacher.email ?? "not existed")\n")
-
-    // ? II. guard statemant
-    /*
-    guard let teacherEmail = favoriteTeacher.email else {
-      print("Their email is not existed")
-    }
-      print("Their email is \(teacherEmail)")
-    */
-
-    // ? III. if-let statement
-    /*
+    // II. if-let statement
     if let teacherMail = favoriteTeacher.email {
       print("Their email is \(teacherMail)")
     } else { print("Their email is not existed") }
-    */
+
+    // III. guard statemant
+    guard let teacherEmail = favoriteTeacher.email else {
+      print("Their email is not existed\n")
+      return
+    }
+      print("Their email is \(teacherEmail)\n")
   }
 }
+
+// ------- structuring constant with data from Struct ------- //
 
 let teachers: [Teacher] = [
   Teacher(name: "Somsak D.", id: 124),
