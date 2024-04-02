@@ -15,17 +15,24 @@ struct QuizBrain {
     //        ["142-52 = 90?","True"]
     //    ]
     let quiz: [Question] = [
-        Question(Q: "4+2 = 6?", A: "True"),
-        Question(Q: "5! = 60?", A: "False"),
-        Question(Q: "142-52 = 95?", A: "False"),
-        Question(Q: "You're the best!", A: "True")
+        Question(q: "Which is the largest organ in the human body?", a: ["Heart", "Skin", "Large Intestine"], correctAnswer: "Skin"),
+        Question(q: "Five dollars is worth how many nickels?", a: ["25", "50", "100"], correctAnswer: "100"),
+        Question(q: "What do the letters in the GMT time zone stand for?", a: ["Global Meridian Time", "Greenwich Mean Time", "General Median Time"], correctAnswer: "Greenwich Mean Time"),
+        Question(q: "What is the French word for 'hat'?", a: ["Chapeau", "Écharpe", "Bonnet"], correctAnswer: "Chapeau"),
+        Question(q: "In past times, what would a gentleman keep in his fob pocket?", a: ["Notebook", "Handkerchief", "Watch"], correctAnswer: "Watch"),
+        Question(q: "How would one say goodbye in Spanish?", a: ["Au Revoir", "Adiós", "Salir"], correctAnswer: "Adiós"),
+        Question(q: "Which of these colours is NOT featured in the logo for Google?", a: ["Green", "Orange", "Blue"], correctAnswer: "Orange"),
+        Question(q: "What alcoholic drink is made from molasses?", a: ["Rum", "Whisky", "Gin"], correctAnswer: "Rum"),
+        Question(q: "What type of animal was Harambe?", a: ["Panda", "Gorilla", "Crocodile"], correctAnswer: "Gorilla"),
+        Question(q: "Where is Tasmania located?", a: ["Indonesia", "Australia", "Scotland"], correctAnswer: "Australia")
+        
     ]
     
     var questionNumber = 0
     var userScore = 0
     
     mutating func checkAnswer(from userAnswer: String) -> Bool {
-        if userAnswer == quiz[questionNumber].answer {
+        if userAnswer == quiz[questionNumber].correctAns {
             userScore += 1
             return true
         } else {
@@ -40,6 +47,10 @@ struct QuizBrain {
             questionNumber = 0
             userScore = 0
         }
+    }
+    
+    func getChoice() -> [String] {
+        return quiz[questionNumber].choice
     }
     
     func getQuestionText() -> String {
