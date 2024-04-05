@@ -1,21 +1,21 @@
-// TODO: define the 'birthday' String constant
-
-// TODO: define the 'valentine' String constant
-
-// TODO: define the 'anniversary' String constant
-
-// TODO: define the 'space' Character constant
-
-// TODO: define the 'exclamation' Character constant
+let birthday: String = "Birthday"
+let valentine: String = "Valentine's Day"
+let anniversary: String = "Anniversary"
+let space: Character = " "
+let exclamation: Character = "!"
 
 func buildSign(for occasion: String, name: String) -> String {
-  fatalError("Please implement the buildSign(for:name:) function")
+  let uppercased = occasion.first?.uppercased()
+  let remaining = occasion.dropFirst()
+  return "Happy \(uppercased! + remaining) \(name)!"
 }
 
 func graduationFor(name: String, year: Int) -> String {
-  fatalError("Please implement the graduationFor(name:year:) function")
+  return "Congratulations \(name)!\nClass of \(String(year))"
 }
 
 func costOf(sign: String) -> Int {
-  fatalError("Please implement the costOf(sign:) function")
+  let charCount = sign.count
+  let cost = 20 + (charCount * 2)
+  return cost
 }
