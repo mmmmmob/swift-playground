@@ -1,5 +1,6 @@
 //
 //  ContentView.swift
+//  == Main View for User Interaction ==
 //  Code History
 //
 //  Created by Theppitak M. on 30.03.2024.
@@ -8,14 +9,52 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let question = Question(questionText: "What was the first computer bug?", possibleAnswers: ["Ant","Beetle","Moth","Fly"], correctAnswerIndex: 2)
+    
+    // tell SwiftUI with @State wrapper that this property of View protocol (typically immutable props) can be mutate, please redrawn when it changed value.
+    @State var mainColor = Color(red: 20/255, green: 28/255, blue: 58/255)
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.teal)
-            Text("Hello, world!").foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/).font(.title).bold()
+        ZStack {
+            mainColor.ignoresSafeArea()
+            VStack {
+                
+                // numOfQuestion
+                Text("1 / 10")
+                    .font(.callout)
+                    .multilineTextAlignment(.leading)
+                    .padding()
+                
+                // questionBody
+                Text(question.questionText)
+                    .font(.largeTitle)
+                    .bold()
+                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                
+                // Push to the edge ^ --- v
+                Spacer()
+                
+                // answerButtons
+                HStack {
+                    // iterate over answer array and render ChoiceTextView component
+                    ForEach(0..<question.possibleAnswers.count, id: \.self) { answerIndex in
+                        Button(action: {
+                            print("Tapped an option with the text: \(question.possibleAnswers[answerIndex])")
+                            
+                            // change color with ternary operator
+                            mainColor = answerIndex == question.correctAnswerIndex ? .green : .red
+                        },
+                               label: {
+                            ChoiceTextView(choiceText: question.possibleAnswers[answerIndex])
+                        }
+                        )
+                    }
+                }
+                .safeAreaPadding()
+            }
         }
-        .padding()
+        .foregroundStyle(.white)
     }
 }
 
