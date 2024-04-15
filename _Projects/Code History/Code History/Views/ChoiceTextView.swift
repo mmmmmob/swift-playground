@@ -1,6 +1,6 @@
 //
 //  ChoiceTextView.swift
-//  == Button Component to reuse with ForEach in ContentView ==
+//  == Button component to reuse with ForEach in ContentView ==
 //  Code History
 //
 //  Created by Theppitak M. on 13.04.2024.
