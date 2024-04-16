@@ -13,6 +13,7 @@ struct Question: Hashable {
     var possibleAnswers: [String]
     var correctAnswerIndex: Int
     
+    // absolute source of truth of all qustions for var created from this struct
     static var allQuestions = [
             Question(questionText: "Who invented the World Wide Web?",
                      possibleAnswers: ["Steve Jobs", "Linus Torvalds", "Bill Gates", "Tim Berners-Lee"],
