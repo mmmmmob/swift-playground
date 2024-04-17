@@ -1,5 +1,6 @@
 //
 //  WelcomeView.swift
+//  == First screen after app launched ==
 //  Code History
 //
 //  Created by Theppitak M. on 17.04.2024.
