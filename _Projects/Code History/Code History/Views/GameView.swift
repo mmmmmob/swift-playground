@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct GameView: View {
     
     let question = Question(questionText: "What was the first computer bug?", possibleAnswers: ["Ant","Beetle","Moth","Fly"], correctAnswerIndex: 2)
     
     // tell SwiftUI with @State wrapper that this property of View protocol (typically immutable props) can be mutate, please redrawn when it changed value.
-    @State var mainColor = Color(red: 20/255, green: 28/255, blue: 58/255)
+    @State var mainColor = GameColor.main
     
     var body: some View {
         ZStack {
@@ -43,7 +43,7 @@ struct ContentView: View {
                             print("Tapped an option with the text: \(question.possibleAnswers[answerIndex])")
                             
                             // change color with ternary operator
-                            mainColor = answerIndex == question.correctAnswerIndex ? .green : .red
+                            mainColor = answerIndex == question.correctAnswerIndex ? GameColor.correctGuess : GameColor.incorrectGuess
                         },
                                label: {
                             ChoiceTextView(choiceText: question.possibleAnswers[answerIndex])
@@ -59,5 +59,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    GameView()
 }
