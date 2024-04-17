@@ -30,6 +30,15 @@ struct GameView: View {
                 QuestionView(question: viewModel.currentQuestion)
             }
         }
+        .background(
+            NavigationLink(
+                // where the application will navigate to when the game is over
+                destination: ScoreView(viewModel: ScoreViewModel(correctGuessed: viewModel.correctGuessed, incorrectGuessed: viewModel.inCorrectGuesses)),
+                // configures the NavigationLink to monitor the new gameIsOver property
+                isActive: .constant(viewModel.gameIsOver),
+                label: {EmptyView()}
+            )
+        )
         .foregroundStyle(.white)
         .toolbar(.hidden) // remove Back btn
         .environmentObject(viewModel) // pass props value to components

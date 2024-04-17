@@ -21,6 +21,7 @@ struct QuestionView: View {
                 .font(.largeTitle)
                 .bold()
                 .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                .padding()
             Spacer()
             HStack {
                 ForEach(0..<question.possibleAnswers.count, id: \.self) {

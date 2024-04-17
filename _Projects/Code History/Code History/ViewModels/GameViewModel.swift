@@ -32,6 +32,11 @@ class GameViewModel: ObservableObject {
         }
     }
     
+    // use this to navigate to game result screen at the end
+    var gameIsOver: Bool {
+        game.isOver
+    }
+    
     // send user guessIndex to Game model
     func makeGuess(atIndex index: Int) {
         game.makeGuessForCurrentQuestion(atIndex: index)
@@ -53,5 +58,14 @@ class GameViewModel: ObservableObject {
             }
         }
         return GameColor.main
+    }
+    
+    // return number of answer with right and wrong from Game model to views
+    var correctGuessed: Int {
+        game.guessCount.correct
+    }
+    
+    var inCorrectGuesses: Int {
+        game.guessCount.incorrect
     }
 }
