@@ -14,29 +14,26 @@ func firstLetter(_ line: String) -> Character {
 
 // capitalize a word
 func capitalize(_ phrase: String) -> String {
-  let firstLetter = phrase.first
-  let capsFirstLetter = firstLetter?.uppercased()
-  let remainingLetters = phrase.dropFirst()
-
-  var capsRemainingLetters = ""
-
-  for letter in remainingLetters {
-    capsRemainingLetters.append(letter.lowercased())
+  let split = phrase.components(separatedBy: " ")
+  var phraseCaps = ""
+  
+  for word in split {
+    phraseCaps += (word.first?.uppercased())! + word.dropFirst().lowercased() + " "
   }
-
-  return capsFirstLetter! + capsRemainingLetters
+  return String(phraseCaps.dropLast())
 }
 
 // trim a sentence
 func trimSentence(_ line: String) -> String {
-  var trimmed = ""
-  for letter in line {
-    if letter == " " {
+  let split = line.components(separatedBy: " ")
+  var dropSpace = ""
+  for word in split {
+    if word == "" || word == "\t" {
       continue
     }
-    trimmed.append(letter)
+    dropSpace += word + " "
   }
-  return trimmed
+  return String(dropSpace.dropLast())
 }
 
 // get the last letter of a sentence
