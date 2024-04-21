@@ -1,65 +1,65 @@
 func timeToPrepare(drinks: [String]) -> Double {
-  var time: Double = 0.0
-  for drink in drinks {
-    switch drink {
-    case "water", "beer", "soda":
-      time += 0.5
-    case "shot":
-      time += 1.0
-    case "mixed drink":
-      time += 1.5
-    case "fancy drink":
-      time += 2.5
-    case "frozen drink":
-      time += 3.0      
-    default:
-      time += 0.0
+    var time = 0.0
+    for drink in drinks {
+        switch drink {
+        case "water", "beer", "soda":
+            time += 0.5
+        case "shot":
+            time += 1.0
+        case "mixed drink":
+            time += 1.5
+        case "fancy drink":
+            time += 2.5
+        case "frozen drink":
+            time += 3.0
+        default:
+            time += 0.0
+        }
     }
-  }
-  return time
+    return time
 }
 
 func makeWedges(needed: Int, limes: [String]) -> Int {
-  var limeCount: Int = 0
-  var limeNeeded: Int = needed
+    var limeCount = 0
+    var limeNeeded: Int = needed
 
-  if limes.count == 0 || needed == 0 {
-      return limeCount
-  }
-
-  for lime in limes {
-    switch lime {
-      case "small":
-        limeNeeded -= 6
-      case "medium":
-        limeNeeded -= 8
-      case "large":
-        limeNeeded -= 10
-      default:
-        break
-      }
-    
-    limeCount += 1
-
-    if limeNeeded <= 0 {
-      break
+    if limes.count == 0 || needed == 0 {
+        return limeCount
     }
-  }
 
-  return limeCount
+    for lime in limes {
+        switch lime {
+        case "small":
+            limeNeeded -= 6
+        case "medium":
+            limeNeeded -= 8
+        case "large":
+            limeNeeded -= 10
+        default:
+            break
+        }
+
+        limeCount += 1
+
+        if limeNeeded <= 0 {
+            break
+        }
+    }
+
+    return limeCount
 }
 
 func finishShift(minutesLeft: Int, remainingOrders: [[String]]) -> [[String]] {
-  var minutesLeft: Int = minutesLeft
-  var remainingOrders: [[String]] = remainingOrders
+    var minutesLeft: Int = minutesLeft
+    var remainingOrders: [[String]] = remainingOrders
 
-  repeat {
-    if remainingOrders.count == 0 || minutesLeft <= 1 { break }
-    minutesLeft -= Int(timeToPrepare(drinks: remainingOrders[0]))
-    remainingOrders.remove(at: 0)
-  } while minutesLeft > 0
+    repeat {
+        if remainingOrders.count == 0 || minutesLeft <= 1 { break }
+        minutesLeft -= Int(timeToPrepare(drinks: remainingOrders[0]))
+        remainingOrders.remove(at: 0)
+    } while minutesLeft > 0
 
-  return remainingOrders
+    return remainingOrders
 }
 
 func orderTracker(orders: [(drink: String, time: String)]) -> (
@@ -72,7 +72,7 @@ func orderTracker(orders: [(drink: String, time: String)]) -> (
     ) = (beer: nil, soda: nil)
 
     for order in orders {
-        if order.drink != "beer" && order.drink != "soda" { continue }
+        if order.drink != "beer", order.drink != "soda" { continue }
 
         if order.drink == "beer" {
             if trackedOrder.beer == nil {

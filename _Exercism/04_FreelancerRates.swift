@@ -12,4 +12,3 @@ func workdaysIn(budget: Double, hourlyRate: Int, withDiscount discount: Double) 
     let workingDays = budget / discountedMonthlyRate
     return workingDays.rounded(.down)
 }
-
