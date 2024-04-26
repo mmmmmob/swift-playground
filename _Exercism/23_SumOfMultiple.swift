@@ -14,30 +14,23 @@
 */
 
 func toLimit(_ limit: Int, inMultiples: [Int]) -> Int {
-  // create set for number less than x multiple values -> according to count of inMultiples members (set members can't be duplicate)
-  // push num of multiple determine with .isMultiple(of:_ -> Bool) inside a set
-  // sum all number and return values
-  var setNumber: Set<Int> = []
-
-  if inMultiples.count == 0 { return 0 } else {
-    for i: Int in 0...inMultiples.count - 1 {
-      if inMultiples[i] > limit { continue } else {
-        for j in inMultiples[i]...limit {
-          if limit > j && j.isMultiple(of: inMultiples[i]){
-            setNumber.insert(j)
-          }
+    // Create a set for numbers less than x multiple values -> according to the count of inMultiples members (set members can't be duplicate)
+    // use guard to detect unsatisfied case
+    // Push num of multiples determined with stride(from:_, through:_, by:_)
+    // Sum all numbers and return values
+    var setNumber: Set<Int> = []
+    guard !inMultiples.isEmpty else { return 0 }
+    for multiple in inMultiples {
+        guard multiple <= limit else { continue }
+        for num in stride(from: multiple, through: limit, by: multiple) {
+            setNumber.insert(num)
         }
-      }
     }
-  }
-
-  var result = 0
-
-  for num in setNumber {
-    result += num
-  }
-
-  return result
+    var result = 0
+    for num in setNumber {
+        result += num
+    }
+    return result
 }
 
 print(toLimit(10_000, inMultiples: [43, 47])) // 2_203_160
