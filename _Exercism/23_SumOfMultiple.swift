@@ -16,16 +16,18 @@
 func toLimit(_ limit: Int, inMultiples: [Int]) -> Int {
     // Create a set for numbers less than x multiple values -> according to the count of inMultiples members (set members can't be duplicate)
     // use guard to detect unsatisfied case
-    // Push num of multiples determined with stride(from:_, through:_, by:_)
     // Sum all numbers and return values
     var setNumber: Set<Int> = []
     guard !inMultiples.isEmpty else { return 0 }
-    for multiple in inMultiples {
-        guard multiple <= limit else { continue }
-        for num in stride(from: multiple, through: limit, by: multiple) {
-            setNumber.insert(num)
+    for i in 0...inMultiples.count - 1 {
+      guard inMultiples[i] <= limit else { continue }
+      for j in inMultiples[i]...limit {
+        if limit > j && j.isMultiple(of: inMultiples[i]) {
+          setNumber.insert(j)
         }
+      }
     }
+        
     var result = 0
     for num in setNumber {
         result += num
@@ -35,7 +37,6 @@ func toLimit(_ limit: Int, inMultiples: [Int]) -> Int {
 
 print(toLimit(10_000, inMultiples: [43, 47])) // 2_203_160
 print(toLimit(20, inMultiples: [3, 5])) // 78
-print(toLimit(20, inMultiples: [7, 13, 17])) // 51
 print(toLimit(10_000, inMultiples: [2, 3, 5, 7, 11])) // 39_614_537
 print(toLimit(1, inMultiples: [3, 5])) // 0
 print(toLimit(4, inMultiples: [3 ,5])) // 3
