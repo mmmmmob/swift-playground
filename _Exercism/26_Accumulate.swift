@@ -12,5 +12,7 @@
 */
 
 struct Accumulate {
-  
+  static func accumulate(collection: [T]) -> [T] {
+    
+  }
 }
