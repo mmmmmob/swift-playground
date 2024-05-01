@@ -24,7 +24,7 @@ struct ContentView: View {
                         .frame(width: 140, height: 140)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                     VStack(spacing: 5) {
-                        Text("Theppitak Maneepong")
+                        Text("Theppitak\nManeepong")
                             .font(.system(.title, design: .rounded, weight: .black))
                         Rectangle()
                             .fill(Color.gray)
@@ -38,7 +38,7 @@ struct ContentView: View {
                 // Intro
                 Text("Former creative copywriter and project manager, now on my way to becoming a developer. On the right side of my brain lies the love of fun and goofy ways to communicate things, while on the left is the love to find ways to manage unmanageable problems into the perfect march.")
                     .font(.system(.caption, design: .rounded, weight: .medium))
-                    .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
+                    .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 25))
                 // Work
                 VStack(alignment: .center) {
                     VStack(alignment: .leading, spacing: 10) {
@@ -62,7 +62,8 @@ struct ContentView: View {
                     .padding()
                     HStack(alignment: .center) {
                         VStack(alignment: .leading) {
-                            Text("Glow Creative")
+                            Link("Glow Creative",
+                                  destination: URL(string: "https://glowyourstory.com")!)
                                 .font(.system(.title3, design: .rounded, weight: .semibold))
                             Text("Project Manager and Operation Management")
                                 .font(.system(.caption, design: .rounded, weight: .light))
@@ -74,7 +75,8 @@ struct ContentView: View {
                     .padding()
                     HStack(alignment: .center) {
                         VStack(alignment: .leading) {
-                            Text("The 101 Percent")
+                            Link("The 101 Percent",
+                                  destination: URL(string: "https://the101.world")!)
                                 .font(.system(.title3, design: .rounded, weight: .semibold))
                             Text("Content Creator")
                                 .font(.system(.caption, design: .rounded, weight: .light))
@@ -86,7 +88,8 @@ struct ContentView: View {
                     .padding()
                     HStack(alignment: .center) {
                         VStack(alignment: .leading) {
-                            Text("daypoets")
+                            Link("daypoets",
+                                  destination: URL(string: "https://adaymagazine.com")!)
                                 .font(.system(.title3, design: .rounded, weight: .semibold))
                             Text("Editorial Writer")
                                 .font(.system(.caption, design: .rounded, weight: .light))
@@ -133,12 +136,210 @@ struct ContentView: View {
                     .padding()
                 }
                 .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
-                Spacer()
-                // Footer
-                Text("© 2024 Theppitak M.")
-                    .font(.system(.footnote, design: .rounded, weight: .light))
-                    .foregroundStyle(Color.gray)
+                // Skills
+                VStack(alignment: .center) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("⚒️ Skills")
+                            .font(.system(.title2, design: .rounded, weight: .semibold))
+                        Rectangle()
+                            .fill(Color.gray)
+                            .frame(width: UIScreen.screenWidth / 1.05, height: 1)
+                    }
+                    ScrollView(.horizontal) {
+                        VStack {
+                            HStack {
+                                ZStack {
+                                    Capsule()
+                                        .frame(width: 90, height: 30)
+                                    HStack {
+                                        Image(systemName: "swift")
+                                            .foregroundStyle(Color.orange)
+                                        Text("Swift")
+                                            .foregroundStyle(Color.white)
+                                            .font(.system(.callout,design: .rounded,weight: .medium))
+                                    }
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.gray)
+                                        .frame(width: 120, height: 30)
+                                    HStack {
+                                        Image(systemName: "swift")
+                                            .foregroundStyle(Color.orange)
+                                        Text("SwiftUI")
+                                            .foregroundStyle(Color.white)
+                                            .font(.system(.callout,design: .rounded,weight: .medium))
+                                    }
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.teal)
+                                        .frame(width: 90, height: 30)
+                                    HStack {
+                                        Image(systemName: "swift")
+                                            .foregroundStyle(Color.orange)
+                                        Text("UIKit")
+                                            .foregroundStyle(Color.white)
+                                            .font(.system(.callout,design: .rounded,weight: .medium))
+                                    }
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.yellow)
+                                        .frame(width: 90, height: 30)
+                                    Text("CSS")
+                                        .foregroundStyle(Color.white)
+                                        .font(.system(.callout,design: .rounded,weight: .medium))
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.brown)
+                                        .frame(width: 90, height: 30)
+                                    Text("React")
+                                        .foregroundStyle(Color.white)
+                                        .font(.system(.callout,design: .rounded,weight: .medium))
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.mint)
+                                        .frame(width: 120, height: 30)
+                                    Text("TailwindCSS")
+                                        .foregroundStyle(Color.white)
+                                        .font(.system(.callout,design: .rounded,weight: .medium))
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.purple)
+                                        .frame(width: 90, height: 30)
+                                    Text("Node.js")
+                                        .foregroundStyle(Color.white)
+                                        .font(.system(.callout,design: .rounded,weight: .medium))
+                                }
+                                
+                            }
+                            HStack {
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.secondary)
+                                        .frame(width: 90, height: 30)
+                                    Text("Express")
+                                        .foregroundStyle(Color.white)
+                                        .font(.system(.callout,design: .rounded,weight: .medium))
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.green)
+                                        .frame(width: 120, height: 30)
+                                    Text("MongoDB")
+                                        .foregroundStyle(Color.white)
+                                        .font(.system(.callout,design: .rounded,weight: .medium))
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.cyan)
+                                        .frame(width: 90, height: 30)
+                                    Text("SQLite")
+                                        .foregroundStyle(Color.white)
+                                        .font(.system(.callout,design: .rounded,weight: .medium))
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.indigo)
+                                        .frame(width: 90, height: 30)
+                                    Text("Next.js")
+                                        .foregroundStyle(Color.white)
+                                        .font(.system(.callout,design: .rounded,weight: .medium))
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.orange)
+                                        .frame(width: 90, height: 30)
+                                    Text("Git")
+                                        .foregroundStyle(Color.white)
+                                        .font(.system(.callout,design: .rounded,weight: .medium))
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.gray)
+                                        .frame(width: 90, height: 30)
+                                    Text("Figma")
+                                        .foregroundStyle(Color.white)
+                                        .font(.system(.callout,design: .rounded,weight: .medium))
+                                }
+                                ZStack {
+                                    Capsule()
+                                        .foregroundStyle(Color.red)
+                                        .frame(width: 120, height: 30)
+                                    Text("UX Writing")
+                                        .foregroundStyle(Color.white)
+                                        .font(.system(.callout,design: .rounded,weight: .medium))
+                                }
+                                
+                            }
+                        }
+                    }
+                    .padding()
+                }
             }
+            // Contacts
+            VStack(alignment: .center) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("☎️ Contact")
+                        .font(.system(.title2, design: .rounded, weight: .semibold))
+                    Rectangle()
+                        .fill(Color.gray)
+                        .frame(width: UIScreen.screenWidth / 1.05, height: 1)
+                }
+                VStack {
+                    HStack(alignment: .center) {
+                        VStack(alignment: .leading) {
+                            Text("GitHub")
+                                .font(.system(.title3, design: .rounded, weight: .semibold))
+                        }
+                        Spacer()
+                        Link("mmmmmob",
+                              destination: URL(string: "https://github.com/mmmmmob")!)
+                        .font(.system(.callout, design: .rounded, weight: .regular))
+                    }
+                    HStack(alignment: .center) {
+                        VStack(alignment: .leading) {
+                            Text("Website")
+                                .font(.system(.title3, design: .rounded, weight: .semibold))
+                        }
+                        Spacer()
+                        Link("theppitak.me",
+                              destination: URL(string: "https://theppitak.me")!)
+                        .font(.system(.callout, design: .rounded, weight: .regular))
+                    }
+                    HStack(alignment: .center) {
+                        VStack(alignment: .leading) {
+                            Text("LinkedIn")
+                                .font(.system(.title3, design: .rounded, weight: .semibold))
+                        }
+                        Spacer()
+                        Link("Theppitak M.",
+                              destination: URL(string: "https://linkedin.com/in/theppitak-m")!)
+                        .font(.system(.callout, design: .rounded, weight: .regular))
+                    }
+                    HStack(alignment: .center) {
+                        VStack(alignment: .leading) {
+                            Text("Email")
+                                .font(.system(.title3, design: .rounded, weight: .semibold))
+                        }
+                        Spacer()
+                        Link("theppitak.m@outlook.com",
+                              destination: URL(string: "mailto:theppitak.m@outlook.com")!)
+                        .font(.system(.callout, design: .rounded, weight: .regular))
+                    }
+                }
+                .padding()
+            }
+            .padding()
+            Spacer()
+            // Footer
+            Text("© 2024 Theppitak M.")
+                .font(.system(.footnote, design: .rounded, weight: .light))
+                .foregroundStyle(Color.gray)
         }
     }
 }
