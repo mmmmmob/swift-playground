@@ -3,6 +3,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State var userText: String = ""
+    // wrapper to enable auto-hide keyboard
+    @FocusState private var textIsFocused: Bool
     
     var body: some View {
         VStack {
@@ -10,27 +12,35 @@ struct ContentView: View {
                 .font(.system(.largeTitle, design: .rounded))
                 .bold()
                 .padding()
+                .textSelection(.enabled)
             TextField("Enter text here.", text: $userText, axis: .vertical)
                 .lineLimit(2...4)
             // $ before variable name means that this variable is meant to be mutated and binding with @State wrapper
                 .textFieldStyle(.roundedBorder)
+            // trigger keyboard hiding after boolean value changed to false after tapped == TextField isn't in focus
+                .focused($textIsFocused)
                 .padding()
             
             HStack {
-                // Use .onTapGesture
+                // Use .onTapGesture (non-flash)
                 ButtonView(btnText: "ALL CAPS", btnColor: .teal)
                     .onTapGesture(perform: {
                         userText = userText.uppercased()
+                        textIsFocused = false
                     })
                 
-                // Use Button struct
-                Button(action: {userText = userText.capitalized}) {
+                // Use Button struct (has user feedback)
+                Button(action: {
+                    userText = userText.capitalized
+                    textIsFocused = false
+                }) {
                     ButtonView(btnText: "First Letter", btnColor: .green)
                 }
-                // Use .onTapGesture
+                // Use .onTapGesture (non-flash)
                 ButtonView(btnText: "lowercase", btnColor: .red)
                     .onTapGesture(perform: {
                         userText = userText.lowercased()
+                        textIsFocused = false
                     })
             }
             .padding()
@@ -48,7 +58,7 @@ struct ButtonView: View {
             .bold()
             .foregroundStyle(Color.white)
             .padding(5)
-            .frame(maxWidth: .infinity, minHeight: 50)
+            .frame(maxWidth: .infinity, minHeight: 70)
             .background(btnColor)
             .clipShape(RoundedRectangle(cornerRadius: 10))
     }
