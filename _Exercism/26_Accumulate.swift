@@ -11,8 +11,14 @@
     1, 4, 9, 16, 25
 */
 
-struct Accumulate {
-  static func accumulate(collection: [T]) -> [T] {
-    
+extension Array {
+  func accumulate<T>(_ operation: (Element) -> T) -> [T] {
+    var collection = [T]()
+
+    for element in self {
+      collection.append(operation(element))
+    }
+
+    return collection
   }
 }
