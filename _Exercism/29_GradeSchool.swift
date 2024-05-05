@@ -24,9 +24,10 @@ class GradeSchool {
 }
 
 let school = GradeSchool()
-
-school.addStudent("Franklin", grade: 5)
-school.addStudent("Bradley", grade: 5)
-school.addStudent("Jeff", grade: 1)
-print(school.roster())
-print(school.studentsInGrade(5))
+school.addStudent("Franklin", grade: 5) // return OK
+school.addStudent("Franklin", grade: 5) // return error and do nothing with dupe input
+school.addStudent("Bradley", grade: 5) // return OK
+school.addStudent("Jeff", grade: 1) // return OK
+/* --------------------- */
+print(school.roster()) // ["Franklin", "Bradley", "Jeff"]
+print(school.studentsInGrade(5)) // ["Franklin, Bradley"]
