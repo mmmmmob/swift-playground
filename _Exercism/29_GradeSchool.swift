@@ -10,16 +10,28 @@
 */
 
 class GradeSchool {
-  func roster() -> [String] {
+  var allStudents: [String: Int] = [:]
 
+  func roster() -> [String] {
+    var result: [String] = []
+    for student in allStudents.keys {
+      result.append(student)
+    }
+    return result.sorted()
   }
 
   func addStudent(_ name: String, grade: Int) {
-
+    allStudents.updateValue(grade, forKey: name)
   }
 
   func studentsInGrade(_ grade: Int) -> [String] {
+    let grader = allStudents.filter({$0.value == grade})
 
+    var result: [String] = []
+    for student in grader {
+      result.append(student.key)
+    }
+    return result.sorted()
   }
 }
 
@@ -30,4 +42,4 @@ school.addStudent("Bradley", grade: 5) // return OK
 school.addStudent("Jeff", grade: 1) // return OK
 /* --------------------- */
 print(school.roster()) // ["Franklin", "Bradley", "Jeff"]
-print(school.studentsInGrade(5)) // ["Franklin, Bradley"]
+print(school.studentsInGrade(5)) // ["Franklin", "Bradley"]
