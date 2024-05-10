@@ -14,32 +14,49 @@ class GradeSchool {
 
   func roster() -> [String] {
     var result: [String] = []
-    for student in allStudents.keys {
-      result.append(student)
+    var sortedStudentByGrade = allStudents.sorted(by: {$0.value < $1.value})
+    let maxGrade = sortedStudentByGrade.last?.value
+
+    guard let maxGrade else { return result }
+    for i in 1...maxGrade {
+      let sortedStudentByGradeAndName = sortedStudentByGrade.filter({$0.value == i}).sorted(by: {$0.key < $1.key})
+      for student in sortedStudentByGradeAndName {
+        result.append(student.key)
+      }
     }
-    return result.sorted()
+
+    return result
   }
 
-  func addStudent(_ name: String, grade: Int) {
-    allStudents.updateValue(grade, forKey: name)
+  func addStudent(_ name: String, grade: Int) -> Bool {
+    if allStudents.contains(where: {$0.key == name}) {
+      return false
+    } else {
+      allStudents.updateValue(grade, forKey: name)
+      return true
+    }
   }
 
   func studentsInGrade(_ grade: Int) -> [String] {
-    let grader = allStudents.filter({$0.value == grade})
+    let grader: [String : Int] = allStudents.filter({$0.value == grade})
 
     var result: [String] = []
-    for student in grader {
+    for student: (key: String, value: Int) in grader {
       result.append(student.key)
     }
     return result.sorted()
   }
 }
 
-let school = GradeSchool()
-school.addStudent("Franklin", grade: 5) // return OK
-school.addStudent("Franklin", grade: 5) // return error and do nothing with dupe input
-school.addStudent("Bradley", grade: 5) // return OK
-school.addStudent("Jeff", grade: 1) // return OK
+let school: GradeSchool = GradeSchool()
+school.addStudent("Peter", grade: 2)
+school.addStudent("Anna", grade: 1)
+school.addStudent("Anna", grade: 2) // return false
+school.addStudent("Barb", grade: 1)
+school.addStudent("Zoe", grade: 2)
+school.addStudent("Alex", grade: 2)
+school.addStudent("Jim", grade: 3)
+school.addStudent("Charlie", grade: 1)
 /* --------------------- */
-print(school.roster()) // ["Franklin", "Bradley", "Jeff"]
-print(school.studentsInGrade(5)) // ["Franklin", "Bradley"]
+print(school.roster()) // ["Anna", "Barb", "Charlie", "Alex", "Peter", "Zoe", "Jim"]
+print(school.studentsInGrade(2)) // ["Alex", "Peter", "Zoe"]
