@@ -14,7 +14,7 @@ class GradeSchool {
 
   func roster() -> [String] {
     var result: [String] = []
-    var sortedStudentByGrade = allStudents.sorted(by: {$0.value < $1.value})
+    let sortedStudentByGrade = allStudents.sorted(by: {$0.value < $1.value})
     let maxGrade = sortedStudentByGrade.last?.value
 
     guard let maxGrade else { return result }
