@@ -19,7 +19,6 @@ enum GrainsError: Error {
   }
 struct Grains {
   static func square(_ num: Int) throws -> UInt64 {
-    
     // error handling with throw
     if num < 1 {
       throw GrainsError.inputTooLow
