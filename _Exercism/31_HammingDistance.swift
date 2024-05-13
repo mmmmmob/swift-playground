@@ -20,12 +20,22 @@ func compute(_ dnaSequence: String, against: String) throws -> Int? {
     throw Hamming.isNotEqual
   }
 
-  var result: Int?
+  if dnaSequence.count == 0 { return 0 } 
+  else {
+    var result: Int? = 0
 
-  return result 
+    for i in 0...dnaSequence.count - 1 {
+      let index = dnaSequence.index(dnaSequence.startIndex, offsetBy: i)
+      if dnaSequence[index] != against[index] {
+        result! += 1
+      }
+    }
+
+    return result!
+  }
 }
 
-print(try compute("GGACGGATTCTG", against: "AGGACGGATTCT")) // 9
-print(try compute("AATG", against: "AAA")) // throws error
-print(try compute("G", against: "T")) // 1
-print(try compute("GGACTGAAATCTG", against: "GGACTGAAATCTG")) // 0
+print(try? compute("GGACGGATTCTG", against: "AGGACGGATTCT")) // 9
+//print(try compute("AATG", against: "AAA")) // throws error enum (try? -> return nil)
+print(try? compute("G", against: "T")) // 1
+print(try? compute("GGACTGAAATCTG", against: "GGACTGAAATCTG")) // 0
