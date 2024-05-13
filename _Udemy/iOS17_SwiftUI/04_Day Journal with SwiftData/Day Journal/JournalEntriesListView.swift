@@ -12,13 +12,14 @@ struct JournalEntriesListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \JournalEntry.date, order: .reverse) private var journalEntries: [JournalEntry]
     @State var isShowCreateView: Bool = false
+    @State private var searchText: String = ""
     
     var body: some View {
         
         let count = journalEntries.count
         NavigationSplitView {
             List {
-                ForEach(journalEntries) { entry in
+                ForEach(searchResult) { entry in
                     NavigationLink {
                         EditJournalEntryView(editingJournalEntry: entry)
                     } label: {
@@ -40,6 +41,17 @@ struct JournalEntriesListView: View {
             }
         } detail: {
             Text("Select an item")
+        }
+        .searchable(text: $searchText)
+    }
+    
+    var searchResult: [JournalEntry] {
+        if searchText.isEmpty {
+            return journalEntries
+        } else {
+            return journalEntries.filter {
+                $0.title.lowercased().contains(searchText.lowercased()) || $0.text.lowercased().contains(searchText.lowercased())
+            }
         }
     }
     
