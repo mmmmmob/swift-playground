@@ -6,15 +6,22 @@
     is divisible by 5, add "Plang" to the result.
     is divisible by 7, add "Plong" to the result.
     is not divisible by 3, 5, or 7, the result should be the number as a string.
-
-  Examples
-    28 is divisible by 7, but not 3 or 5, so the result would be "Plong".
-    30 is divisible by 3 and 5, but not 7, so the result would be "PlingPlang".
-    34 is not divisible by 3, 5, or 7, so the result would be "34".
 */
 
 func raindrops(_ number: Int) -> String {
-  // Write your code for the 'Raindrops' exercise in this file.
+    var result = ""
+
+    if number.isMultiple(of: 3) {
+        result += "Pling"
+    }
+    if number.isMultiple(of: 5) {
+        result += "Plang"
+    }
+    if number.isMultiple(of: 7) {
+        result += "Plong"
+    }
+
+    return result.isEmpty ? String(number) : result
 }
 
 print(raindrops(3)) // "Pling"
