@@ -9,6 +9,7 @@
 enum NucleotideCountErrors: Error {
   case invalidNucleotide
 }
+
 class DNA {
   var strand: String
   static let validNucleotide: Set<Character> = ["A","T","G","C"]
