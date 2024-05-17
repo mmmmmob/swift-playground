@@ -6,6 +6,10 @@
     "INVALID" -> error
 */
 
+enum StrandError: Error {
+  case invalidNucleotide
+}
+
 class DNA {
   var strand: String
 
@@ -13,10 +17,10 @@ class DNA {
     self.strand = strand
   }
 
-  func count() -> [String : Int] {
+  func count() throws -> [String : Int] {
     return [self.strand : 0]
   }
 }
 
 let dna = DNA(strand: "AAAA")
-print(dna.count())
+print(try! dna.count())
