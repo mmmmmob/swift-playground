@@ -18,9 +18,16 @@ class DNA {
   }
 
   func count() throws -> [String : Int] {
+    let strand = self.strand
+    let validNucleotide: Set<Character> = ["A","T","G","C"]
+
+    if !strand.allSatisfy({validNucleotide.contains($0)}) {
+      throw StrandError.invalidNucleotide
+    }
+
     return [self.strand : 0]
   }
 }
 
-let dna = DNA(strand: "AAAA")
+let dna = DNA(strand: "AAGGT")
 print(try! dna.count())
