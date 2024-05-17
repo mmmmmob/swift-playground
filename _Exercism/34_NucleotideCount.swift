@@ -6,28 +6,33 @@
     "INVALID" -> error
 */
 
-enum StrandError: Error {
+enum NucleotideCountErrors: Error {
   case invalidNucleotide
 }
-
 class DNA {
   var strand: String
+  static let validNucleotide: Set<Character> = ["A","T","G","C"]
 
-  init(strand: String) {
+  init(strand: String) throws {
+    if !strand.allSatisfy({DNA.validNucleotide.contains($0)}) {
+      throw NucleotideCountErrors.invalidNucleotide
+    }
+
     self.strand = strand
   }
 
-  func count() throws -> [String : Int] {
+  func counts() -> [String : Int] {
     let strand = self.strand
-    let validNucleotide: Set<Character> = ["A","T","G","C"]
+    var result: Dictionary<String, Int> = ["A": 0, "C": 0, "G": 0, "T": 0]
 
-    if !strand.allSatisfy({validNucleotide.contains($0)}) {
-      throw StrandError.invalidNucleotide
+    for nucleotide in strand {
+      result[String(nucleotide)]! += 1
     }
 
-    return [self.strand : 0]
+    return result
   }
 }
 
-let dna = DNA(strand: "AAGGT")
-print(try! dna.count())
+//let dna = try DNA(strand: "AATxGGCCAAA") // throw error
+let dna2 = try DNA(strand: "AGGTCCAAA")
+print(dna2.counts()) // return -> ["G": 2, "A": 4, "T": 1, "C": 2]
