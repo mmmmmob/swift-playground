@@ -24,15 +24,28 @@ class BinarySearch {
     self.arrayOfInt = arrayOfInt
   }
 
-  func searchFor(_ number: Int) throws -> Int {
-    
+  func searchFor(_ number: Int) throws ->  Int {
+
   }
 }
 
+// Make Class References //
 let binarySearch1 = BinarySearch([1, 3, 4, 6, 8, 9, 11])
 let binarySearch2 = BinarySearch([1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377])
 let binarySearch3 = BinarySearch([1, 3, 4, 6, 8, 9, 11])
 
-print(try? binarySearch1.searchFor(6)) // 3
-print(try? binarySearch2.searchFor(21)) // 5
-print(try binarySearch3.searchFor(7)) // throw BinarySearchError.valueNotFound
+// Check Result //
+// ------------ //
+// try? ->  throw return in Optional value or nil
+print(try? binarySearch1.searchFor(6)) // Optional(3)
+
+// try! ->  force return value or crash if cannot return
+print(try! binarySearch2.searchFor(21)) // 5
+
+// try ->  use with do-catch conditional
+do {
+    let result = try binarySearch3.searchFor(7)
+    print(result)
+} catch {
+    print(\(error))
+}
